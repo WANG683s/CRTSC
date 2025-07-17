@@ -166,14 +166,14 @@ def train(dataloader, epoch):
 
         loss_all = CONFIG.recon_w * recon_criterion(out["recon"], img)
 
-        loss_all += 0.05 * ssim_loss(out["recon"], img)
+        loss_all += 0.05 * tsim(out["recon"], img)
         
         tot_loss['recon_loss'] += loss_all.item()
 
         if CONFIG.dist and 'teacher_recon' in out and torch.is_tensor(out['teacher_recon']):
             t_recon_loss = CONFIG.t_w * recon_criterion(out["teacher_recon"], img)
 
-            t_recon_loss += ssim_loss(out["teacher_recon"], img)
+            t_recon_loss += tsim(out["teacher_recon"], img)
             
             loss_all =  loss_all + t_recon_loss
             tot_loss['t_recon_loss'] += t_recon_loss.item()
@@ -233,7 +233,7 @@ def gan_train(dataloader, epoch):
             tot_loss['recon_loss'] += recon_loss.item()
             loss_all = recon_loss
             
-             loss_all += ssim_loss(out["recon"], img)
+             loss_all += tsim(out["recon"], img)
 
             # generator loss
             fake_validity = discriminator(out["recon"])
@@ -272,7 +272,7 @@ def gan_train(dataloader, epoch):
 
 
 
-def ssim_loss(img1, img2, window_size=11, size_average=True):
+def tsim(img1, img2, window_size=11, size_average=True):
 
     # 构建高斯权重矩阵
     channel = img1.size()[1]
@@ -290,12 +290,11 @@ def ssim_loss(img1, img2, window_size=11, size_average=True):
     sigma2_sq = F.conv2d(img2 * img2, window, padding=window_size // 2, groups=channel) - mu2_sq
     sigma12 = F.conv2d(img1 * img2, window, padding=window_size // 2, groups=channel) - mu1_mu2
 
-    # 计算SSIM指标
     C1 = (0.01 ** 2)
     C2 = (0.03 ** 2)
     ssim_map = ((2 * mu1_mu2 + C1) * (2 * sigma12 + C2)) / ((mu1_sq + mu2_sq + C1) * (sigma1_sq + sigma2_sq + C2))+ texture_consistency_loss(img1,img2)
 
-    # 对SSIM指标进行加权平均
+
     if size_average:
         return torch.mean((1.0 - ssim_map) / 2)
     else:
