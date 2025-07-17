@@ -76,7 +76,7 @@ class double_conv(nn.Module):
         )
 
         if self.use_se:
-            self.se = CWA(out_ch)
+            self.se = CWR(out_ch)
 
     def forward(self, x):
         x = self.conv1(x)
@@ -92,9 +92,9 @@ class double_conv(nn.Module):
         return x
 
 
-class CWA(nn.Module):
+class CWR(nn.Module):
     def __init__(self, ch_in, reduction=8):
-        super(CWA, self).__init__()
+        super(CWR, self).__init__()
         self.avg_pool = nn.AdaptiveAvgPool2d(1)  
         self.fc = nn.Sequential(
             nn.Linear(ch_in, ch_in // reduction, bias=False),
