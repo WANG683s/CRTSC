@@ -4,7 +4,7 @@ This study proposes a novel and effective harnessing channel-wise recalibration 
 
 our method has achieved significant performance improvement (i.e,AUC gains of 2%) compared to the state-of-the-art (SOTA) methods.
 
-<p align="center"><img width="100%" src="documents/fra.png" /></p>
+<p align="center"><img width="100%" src="documents/new.png" /></p>
 
 ## Paper
 
