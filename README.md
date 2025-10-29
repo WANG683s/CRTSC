@@ -84,6 +84,7 @@ Alternatively, you can modify ```eval.sh``` and simply run:
 
 
 ###Citation
+```
 @article{xiong2025crtsc,
   title={CRTSC:Channel-Wise Recalibration and Texture-Structural Consistency Constraint for Anomaly Detection in Medical Chest Images},
    author    = {Xiong, Mingfu.; Wang, Chong.; Cai*, Hao.; Alotaibi, Aziz.; Anwar, Saeed.; Saudagar, Abdul Khader Jilani.; Del Ser, Javier.; Muhammad, Khan},
@@ -92,3 +93,4 @@ Alternatively, you can modify ```eval.sh``` and simply run:
   year      = {2025}, 
   publisher = {MDPI} 
 }
+```
