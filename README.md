@@ -76,7 +76,19 @@ Evaluate with an exp identifier (config file will be imported from the *exp fold
 python3 eval.py --exp zhang_exp1
 ```
 
+
 Alternatively, you can modify ```eval.sh``` and simply run:
 ``` html
 ./eval.sh
 ```
+
+
+###Citation
+@article{xiong2025crtsc,
+  title={CRTSC:Channel-Wise Recalibration and Texture-Structural Consistency Constraint for Anomaly Detection in Medical Chest Images},
+   author    = {Xiong, Mingfu.; Wang, Chong.; Cai*, Hao.; Alotaibi, Aziz.; Anwar, Saeed.; Saudagar, Abdul Khader Jilani.; Del Ser, Javier.; Muhammad, Khan},
+  journal   = {Sensors},
+  pages     = {},
+  year      = {2025}, 
+  publisher = {MDPI} 
+}
